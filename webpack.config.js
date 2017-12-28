@@ -12,11 +12,11 @@ module.exports = {
     loaders: [
       {
         test: /\.vue$/,
-        loader: 'vue'
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         // make sure to exclude 3rd party code in node_modules
         exclude: /node_modules/
       },
@@ -39,14 +39,17 @@ module.exports = {
       options: {
         vue: {
           loaders: {
-            js: 'babel'
+            js: 'babel-loader'
           }
         }
       }
     })
-  ]
-  // vue-loader config:
-  // lint all JavaScript inside *.vue files with ESLint
-  // make sure to adjust your .eslintrc
-
+  ],
+  /*--resolve-aliasを入れないと、デフォルトでVue.jsがRuntime-only buildになり、正常に動いてくれない
+http://qiita.com/rsooo/items/0a9caf9ee804874eac03*/
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
+  }
 }
