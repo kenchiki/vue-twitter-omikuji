@@ -1,4 +1,7 @@
-import IndexView from './pages/index.vue'
+import Index from './pages/index.vue'
+import Result from './pages/result.vue'
+
 export default [
-  { path: '/', component: IndexView }
+  { path: '/', component: Index },
+  { path: '/result', component: Result }
 ];

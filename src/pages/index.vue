@@ -1,12 +1,12 @@
 <template lang="html">
   <div>
-  test
+  <router-link to="/result">おみくじを引く</router-link>
 </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 </style>
 
 <script>
-  module.exports =  {};
+  export default {}
 </script>
