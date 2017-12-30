@@ -1,0 +1,396 @@
+@charset "UTF-8";
+/****************
+ module
+*****************/
+/****************
+ fixed
+*****************/
+html {
+  font-size: 112.5%;
+  color: rgba(0, 0, 0, 0.7);
+  background: #F4F7FA; }
+  html, html textarea {
+    font-family: 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', 'Osaka', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif; }
+
+a {
+  color: rgba(1, 135, 208, 0.87);
+  text-decoration: underline; }
+
+a:visited {
+  color: rgba(1, 135, 208, 0.87); }
+
+a:hover {
+  color: rgba(1, 135, 208, 0.87);
+  text-decoration: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+ul, ol {
+  list-style-type: none; }
+
+dl dt {
+  margin: 0; }
+
+p, dd, li {
+  word-break: break-all; }
+
+body {
+  overflow-x: hidden; }
+
+/*iphoneでルビで文字サイズが勝手に変わるのを修正*/
+body {
+  -webkit-text-size-adjust: 100%; }
+
+select {
+  margin-bottom: 0; }
+
+.tooltip {
+  white-space: nowrap;
+  max-width: 100%; }
+
+.reveal {
+  padding: 0;
+  overflow-x: hidden; }
+
+input[type] {
+  margin-bottom: 0; }
+
+img {
+  max-width: 100%;
+  vertical-align: middle; }
+
+input[type=email], input[type=password], input[type=text], textarea, select {
+  width: 100%;
+  box-sizing: border-box; }
+
+/****************
+ common
+*****************/
+.mt0 {
+  margin-top: 0px !important; }
+
+.ml0 {
+  margin-left: 0px !important; }
+
+.font-serif {
+  font-family: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "游明朝", "Yu Mincho", "HG明朝B","ＭＳ Ｐ明朝","ＭＳ 明朝" , serif; }
+
+@media print, screen and (max-width: 1024px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px; } }
+@media print, screen and (min-width: 1025px) {
+  .container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px; } }
+
+@media print, screen and (max-width: 640px) and (max-width: 1024px) {
+  .small-container {
+    padding-left: 10px;
+    padding-right: 10px; } }
+@media print, screen and (max-width: 640px) and (min-width: 1025px) {
+  .small-container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px; } }
+
+@media print, screen and (min-width: 641px) and (max-width: 1024px) {
+  .medium-container {
+    padding-left: 10px;
+    padding-right: 10px; } }
+@media print, screen and (min-width: 641px) and (min-width: 1025px) {
+  .medium-container {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px; } }
+
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  /*background:transparent;*/ }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+nav ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  /*background:transparent;*/ }
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input, select {
+  vertical-align: middle; }
+
+/****************
+ hack
+*****************/
+/*clearFix*/
+.clearFix:after {
+  content: ".";
+  display: block;
+  height: 0px;
+  clear: both;
+  visibility: hidden; }
+
+.clearFix {
+  display: inline-table; }
+
+/* Hides from IE-mac \*/
+* html .clearFix {
+  height: 1%; }
+
+.clearFix {
+  display: block; }
+
+/* End hide from IE-mac */
+*:first-child + html .clearFix {
+  zoom: 1; }
+
+/* IE7 */
+/****************
+ wysiwyg
+*****************/
+/*ckeditor body*/
+body.wysiwyg {
+  padding: 10px;
+  background-color: #FFF; }
+
+.wysiwyg ul {
+  padding-left: 20px;
+  list-style: disc;
+  margin-top: 10px;
+  /*回り込み画像時にリストが出ない問題を解決*/
+  overflow: hidden; }
+
+* html .wysiwyg ul {
+  display: inline-block; }
+
+.wysiwyg ol {
+  /*IE7 100の位まで対応*/
+  padding-left: 50px;
+  list-style: decimal;
+  margin-top: 10px;
+  /*回り込み画像時にリストが出ない問題を解決*/
+  overflow: hidden; }
+
+* html .wysiwyg ol {
+  display: inline-block; }
+
+.wysiwyg p {
+  margin-top: 20px;
+  line-height: 150%; }
+  .wysiwyg p:first-child {
+    margin-top: 0; }
+
+.wysiwyg p img {
+  max-width: 100%;
+  height: auto; }
+
+.wysiwyg table {
+  border-collapse: collapse;
+  border: 1px solid #cccccc;
+  margin-top: 10px; }
+
+.wysiwyg table td, .wysiwyg table th {
+  border-collapse: collapse;
+  border: 1px solid #B1B1B1;
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px; }
+
+.wysiwyg table th {
+  background-color: #E8F4ED; }
+
+.wysiwyg table caption {
+  text-align: left;
+  font-weight: bold; }
+
+.wysiwyg div {
+  line-height: 150%;
+  margin-top: 10px; }
+
+.wysiwyg > *:first-child {
+  margin-top: 0; }
+
+.wysiwyg--section {
+  margin-top: 20px; }
+
+/****************
+ web font
+*****************/
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: font-url("material-design-icons/iconfont/MaterialIcons-Regular.eot");
+  /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"), font-url("material-design-icons/iconfont/MaterialIcons-Regular.woff2") format("woff2"), font-url("material-design-icons/iconfont/MaterialIcons-Regular.woff") format("woff"), font-url("material-design-icons/iconfont/MaterialIcons-Regular.ttf") format("truetype"); }
+.material-icons {
+  vertical-align: text-bottom;
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
+
+.material-icons.md-18 {
+  font-size: 18px; }
+
+.material-icons.md-24 {
+  font-size: 24px; }
+
+.material-icons.md-36 {
+  font-size: 36px; }
+
+.material-icons.md-48 {
+  font-size: 48px; }
+
+.cols-example {
+  flex-flow: row wrap;
+  display: flex;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: -10px; }
+  .cols-example > * {
+    flex-shrink: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    box-sizing: border-box; }
+  .cols-example > * {
+    width: 50%; }
+  .cols-example .cols-example__bold {
+    font-weight: bold; }
+    @media print, screen and (max-width: 640px) {
+      .cols-example .cols-example__bold {
+        font-size: 2.7777777778rem; } }
+    @media print, screen and (min-width: 641px) {
+      .cols-example .cols-example__bold {
+        font-size: 8.3333333333rem; } }
+
+.small-box-example {
+  border: 1px solid #ccc;
+  background: #eeeeee;
+  padding: 10px; }
+  @media print, screen and (max-width: 1024px) {
+    .small-box-example {
+      padding-left: 10px;
+      padding-right: 10px; } }
+  @media print, screen and (min-width: 1025px) {
+    .small-box-example {
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 15px;
+      padding-right: 15px; } }
+
+.navigation-example ul {
+  flex-flow: row wrap;
+  display: flex;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-top: -10px;
+  justify-content: center; }
+  .navigation-example ul > * {
+    flex-shrink: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    box-sizing: border-box; }
+  .navigation-example ul a {
+    border: 1px solid #ccc;
+    background: #eeeeee;
+    padding: 10px;
+    text-decoration: none; }
+
+/*# sourceMappingURL=top.css.map */

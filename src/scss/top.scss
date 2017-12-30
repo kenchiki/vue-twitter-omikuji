@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+@import "top_settings";
+@import "module/module";
+
+html {
+  background: url(../../img/html_bg.png);
+}
+
+.cols-example {
+  @include grid($x: 10, $y: 10, $n: 2);
+  .cols-example__bold {
+    font-weight: bold;
+    //レスポンシブの例
+    @include breakpoint($s: 'medium', $t: 'down') {
+      font-size: rem-calc(50);
+    }
+    @include breakpoint($s: 'medium', $t: 'up') {
+      font-size: rem-calc(150);
+    }
+  }
+}
+
+.small-box-example {
+  @include container($w: 500px);
+  border: 1px solid #ccc;
+  background: #eeeeee;
+  padding: 10px;
+}
+
+.navigation-example {
+  ul {
+    @include menu($x: 10, $y: 10, $j: 'center');
+    a {
+      border: 1px solid #ccc;
+      background: #eeeeee;
+      padding: 10px;
+      text-decoration: none;
+    }
+  }
+}
+

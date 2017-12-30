@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/****************
+ wysiwyg
+*****************/
+
+/*ckeditor body*/
+body.wysiwyg {
+  padding: 10px;
+  background-color: #FFF;
+}
+
+.wysiwyg ul {
+  padding-left: 20px;
+  list-style: disc;
+  margin-top: 10px;
+  /*回り込み画像時にリストが出ない問題を解決*/
+  overflow: hidden;
+}
+
+* html .wysiwyg ul {
+  display: inline-block;
+}
+
+.wysiwyg ol {
+  /*IE7 100の位まで対応*/
+  padding-left: 50px;
+  list-style: decimal;
+  margin-top: 10px;
+  /*回り込み画像時にリストが出ない問題を解決*/
+  overflow: hidden;
+}
+
+* html .wysiwyg ol {
+  display: inline-block;
+}
+
+.wysiwyg p {
+  margin-top: 20px;
+  line-height: 150%;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.wysiwyg p img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wysiwyg table {
+  border-collapse: collapse;
+  border: 1px solid #cccccc;
+  margin-top: 10px;
+}
+
+.wysiwyg table td, .wysiwyg table th {
+  border-collapse: collapse;
+  border: 1px solid #B1B1B1;
+  padding-top: 5px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+
+.wysiwyg table th {
+  background-color: #E8F4ED;
+}
+
+.wysiwyg table caption {
+  text-align: left;
+  font-weight: bold;
+}
+
+.wysiwyg div {
+  line-height: 150%;
+  margin-top: 10px;
+}
+
+.wysiwyg > *:first-child {
+  margin-top: 0;
+}
+
+
+.wysiwyg--section {
+  margin-top: 20px;
+}

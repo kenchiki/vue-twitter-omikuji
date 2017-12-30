@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/****************
+ fixed
+*****************/
+
+html {
+  font-size: $global-font-size;
+  color: $global-font-color;
+  background: $global-background;
+  &,textarea {
+    font-family: 'Helvetica', 'Arial', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', 'Osaka', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  }
+}
+
+a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: $link_color_visited;
+
+}
+
+a:hover {
+  color: $link_color_hover;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+dl dt {
+  margin: 0;
+}
+
+//urlが折り返さなくてレイアウトを崩れるのを防ぐ
+p,dd,li {
+  word-break: break-all;
+}
+
+// ネガティブマージンでスクロールが出るのを防ぐ
+// そもそもレスポンシブなのでスクロールは不要
+body {
+  overflow-x: hidden;
+}
+
+/*iphoneでルビで文字サイズが勝手に変わるのを修正*/
+body {
+  -webkit-text-size-adjust: 100%;
+}
+
+select {
+  margin-bottom: 0;
+}
+
+//tooltipが折り返されるのを修正
+.tooltip {
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+//ライトボックスが中央にならない問題を回避
+.reveal {
+  //top: 50% !important;
+  //-webkit-transform: translateY(-50%) !important;
+  //transform: translateY(-50%) !important;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+//inputの下にマージンがあるので取る
+input[type] {
+  margin-bottom: 0;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  //height: auto;
+}
+
+input[type=email], input[type=password], input[type=text], textarea, select {
+  width: 100%;
+  box-sizing: border-box;
+}

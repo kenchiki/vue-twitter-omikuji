@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+//usage:
+//@include breakpoint($s: 'medium', $t: 'down') {
+//}
+//@include breakpoint($s: 'medium', $t: 'up') {
+//}
+@mixin breakpoint(
+  $s: 'small',
+  $t: 'up'
+) {
+  $breakpoint_size: 0; // スコープ用
+  $types: (
+          up: 'min-width',
+          down: 'max-width'
+  );
+  @if $t == 'up' {
+    $breakpoint_size: map-get($breakpoints, $s) + 1px;
+  } @else {
+    $breakpoint_size: map-get($breakpoints, $s);
+  }
+
+  @media print, screen and (map-get($types, $t): #{$breakpoint_size}) {
+    @content;
+  }
+}
+
+@mixin gutter(
+  $x: 0,
+  $y: 0
+) {
+  $x_half: $x / 2;
+  flex-flow: row wrap;
+  display: flex;
+  margin-left: -#{$x_half}px;
+  margin-right: -#{$x_half}px;
+  margin-top: -#{$y}px;
+  & > * {
+    flex-shrink: 0; //縮小機能が働かないようにする
+    padding-left: #{$x_half}px;
+    padding-right: #{$x_half}px;
+    padding-top: #{$y}px;
+    box-sizing: border-box;
+  }
+}
+
+//usage:@include grid($x: 10, $y: 10, $n: 2);
+@mixin grid(
+  $x: 0,
+  $y: 0,
+  $n: 1
+) {
+  @include gutter($x: $x, $y: $y);
+  & > * {
+    width: percentage(1 / $n);
+  }
+}
+
+//usage:@include menu($x: 0, $y: 0, $j: flex-end);
+@mixin menu(
+  $x: 0,
+  $y: 0,
+  $j: 'flex-start'
+) {
+  @include gutter($x: $x, $y: $y);
+  justify-content: #{$j};
+}
+
+//usage:@include container($w: 900px);
+@mixin container(
+  $w: 1200px
+) {
+  @include breakpoint($s: 'large', $t: 'down') {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @include breakpoint($s: 'large', $t: 'up') {
+    max-width: $w;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+//usage:@include ratio($r: 0.5);
+@mixin ratio(
+  $r: 0.5
+) {
+  position: relative;
+  &:after {
+    content: "";
+    display: block;
+    padding-top: percentage($r);
+  }
+  & > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+//strip-unitの使い方：$length: 42px;$value: strip-unit($length);// -> 42
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+//usage:font-size: rem-calc(112);
+@function rem-calc($value) {
+  //baseの%からpxを計算する
+  $base: ($global-font-size / 100%) * 16px;//$global-font-sizeは%で指定する
+
+  @return strip-unit($value) / strip-unit($base) * 1rem;
+}
+
+//usage:@include button;
+@mixin button(
+) {
+  display: inline-block;
+  line-height: 1;
+  cursor: pointer;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  border: 0;
+  transition: all .3s;
+  padding: 9px 18px;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+}
