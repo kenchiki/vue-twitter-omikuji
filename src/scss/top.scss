@@ -4,7 +4,7 @@
 @import "module/module";
 
 @mixin section_small() {
-  width: 73%;
+  width: 80%;
   margin: 50px auto 0 auto;
 }
 
@@ -25,10 +25,19 @@ html {
     color: #FFFFFF;
     border-radius: 10px;
     padding: 20px;
-    width: 62%;
-    font-size: rem-calc(34);
+    width: 80%;
+    @include breakpoint($s: 'medium', $t: 'down') {
+      font-size: rem-calc(20);
+    }
+    @include breakpoint($s: 'medium', $t: 'up') {
+      font-size: rem-calc(34);
+    }
     box-shadow: 0px 5px 0px -1px #2a6291;
   }
+}
+
+.ad {
+  @include section_small;
 }
 
 .banners {
@@ -38,6 +47,12 @@ html {
     &:first-child {
       margin-top: 0;
     }
+  }
+  span {
+    border: 1px solid #000000;
+    display: block;
+    padding: 15px 0;
+    text-align: center;
   }
   img {
     width: 100%;
@@ -92,5 +107,71 @@ html {
 }
 
 .result {
+  width: 47%;
+  background: #FFFFFF;
+  position: relative;
+  margin: -40px auto 0 auto;
+  border: 7px solid #DA0713;
+  padding: 7px;
+  .result__in {
+    border: 4px solid #DA0713;
+    padding: 30px 0 200px 0;
+    background: url(../../images/result__bg.png) no-repeat center bottom 30px;
+  }
+  .result__short, .result_message {
+    & > * {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      writing-mode: vertical-rl;
+      white-space: nowrap;
+    }
+  }
 
+  .result__short {
+    color: #DA0713;
+    @include breakpoint($s: 'medium', $t: 'down') {
+      font-size: rem-calc(50);
+    }
+    @include breakpoint($s: 'medium', $t: 'up') {
+      font-size: rem-calc(72);
+    }
+  }
+
+  .result_message {
+    @include breakpoint($s: 'medium', $t: 'down') {
+      font-size:rem-calc(30);
+    }
+    @include breakpoint($s: 'medium', $t: 'up') {
+      font-size:rem-calc(45);
+    }
+    color: #44231A;
+    margin-top: 60px;
+  }
+}
+
+.twitter {
+  margin-top: 60px;
+  text-align: center;
+  .twitter__btn {
+    @include button;
+    background: #1DA1F2;
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    @include breakpoint($s: 'medium', $t: 'down') {
+      font-size: rem-calc(16);
+    }
+    @include breakpoint($s: 'medium', $t: 'up') {
+      font-size: rem-calc(24);
+    }
+    box-shadow: 0px 5px 0px -1px #1681B7;
+    span {
+      background: url(../../images/twitter__icon.svg) no-repeat left center;
+      background-size: 28px auto;
+      display: inline-block;
+      padding: 5px 0 5px 40px;
+    }
+  }
 }

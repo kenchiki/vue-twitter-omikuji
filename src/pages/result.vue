@@ -2,43 +2,28 @@
 <div>
 
 
-<div class="result_animation">
-<canvas id="result_animation"></canvas>
-</div>
+  <div class="result_animation">
+    <canvas id="result_animation"></canvas>
+  </div>
 
-<div v-show="fortune_result">
-  <div class="result">
-  <p class="result__result">
-  {{ fortune_result }}
-  </p>
-   <p class="result_message">{{ fortune_result_message }}</p>
-    <p class="twitter">
-    <a class="twitter_btn" v-bind:href="twitter_url" target="_blank">tweetする</a></p>
-</div>
-</div>
+  <div v-show="fortune_result">
+    <div class="result">
+      <div class="result__in">
+        <div class="result__result">
+          <div class="result__short font-serif"><p>{{ fortune_result }}</p></div>
+          <div class="result_message font-serif"><p>{{ fortune_result_message }}</p></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="twitter"><a class="twitter__btn" v-bind:href="twitter_url" target="_blank"><span>結果をツイート</span></a></p>
+
+  </div>
 
 </div>
-
-
 </template>
 
 <style lang="scss" scoped>
-
-  .result {
-    white-space: pre;
-  }
-  .result_message {
-    white-space: pre;
-    margin-top: 50px;
-  }
-  .twitter_btn {
-    background: #55ACEE;
-    display: inline-block;
-    padding: 10px;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 10px;
-  }
 </style>
 
 <script>
@@ -87,10 +72,10 @@
 
       setTimeout(function() {
         const random_number = scope.get_random_number(100);
-        scope.fortune_result = scope.get_fortune_result(random_number);
+        scope.fortune_result = scope.get_short_fortune_result(random_number);
         scope.fortune_result_message = scope.get_fortune_result_message();
-        scope.twitter_url = scope.get_twitter_url(scope.fortune_result, scope.fortune_result_message);
-      }, 100);
+        scope.twitter_url = scope.get_twitter_url(scope.get_fortune_result(random_number), scope.fortune_result_message);
+      }, 200);
     },
     methods: {
       get_random_number(max_number) {
@@ -121,6 +106,26 @@
         }
 
         return fortune_result;
+      },
+      get_short_fortune_result(random_number) {
+        if(random_number === 0) {
+          return '神吉';
+        }
+        else if(random_number <= 9) {
+          return '大吉';
+        }
+        else if(random_number <= 24) {
+          return '中吉';
+        }
+        else if(random_number <= 49) {
+          return '小吉';
+        }
+        else if(random_number <= 74) {
+          return '吉';
+        }
+        else {
+          return '半吉';
+        }
       },
       get_fortune_result_message() {
         const messages = [

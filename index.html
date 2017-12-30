@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Twitter Omikuji</title>
+  <title>銀河おみくじ出張所</title>
 </head>
 <body>
 
@@ -11,10 +11,14 @@
   <div class="container">
     <router-view></router-view>
 
+    <div class="ad">
+      <script type="text/javascript">amzn_assoc_ad_type ="responsive_search_widget"; amzn_assoc_tracking_id ="kenchiki-22"; amzn_assoc_marketplace ="amazon"; amzn_assoc_region ="JP"; amzn_assoc_placement =""; amzn_assoc_search_type = "search_widget";amzn_assoc_width ="auto"; amzn_assoc_height ="auto"; amzn_assoc_default_search_category =""; amzn_assoc_default_search_key ="アニメ";amzn_assoc_theme ="light"; amzn_assoc_bg_color ="FFFFFF"; </script><script src="//z-fe.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1&Marketplace=JP"></script>
+    </div>
+
     <ul class="banners">
-      <li><a href="https://folio.ginga.earth/"><img src="images/banners__ginga_folio.png" alt=""></a></li>
-      <li><a href="https://gingadon.com/"><img src="images/banners__gingadon.png" alt=""></a></li>
-      <li><a href="https://www.amazon.co.jp/Amazon%E3%82%AE%E3%83%95%E3%83%88%E5%88%B8-E%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%97/dp/BT00DHI8G4"><img src="images/banners__amazon_gift.png" alt=""></a></li>
+      <li><a href="https://folio.ginga.earth/"><img src="images/banners__ginga_folio.png" alt="" target="_blank"></a></li>
+      <li><a href="https://gingadon.com/"><img src="images/banners__gingadon.png" alt="" target="_blank"></a></li>
+      <li><a href="https://www.amazon.co.jp/gp/product/B004N3APGO/ref=as_li_tl?ie=UTF8&tag=kenchiki-22&camp=247&creative=1211&linkCode=as2&creativeASIN=B004N3APGO&linkId=dc6c42e21d1c0f7e438eaaf1586fcf30" target="_blank"><span>お世話になったあのひとへ - Amazonギフト券</span></a></li>
     </ul>
 
     <div class="instances">
@@ -24,8 +28,8 @@
       </p>
       <dl class="instances__search">
         <dt>その他のマストドンインスタンスは以下のリンク等から探せます。</dt>
-        <dd><a href="https://ja.mstdn.wiki/">日本のインスタンス - マストドン日本語ウィキ</a></dd>
-        <dd><a href="http://k52.org/mastodon/">日本のマストドンインスタンスの一覧 - k52.org</a></dd>
+        <dd><a href="https://ja.mstdn.wiki/" target="_blank">日本のインスタンス - マストドン日本語ウィキ</a></dd>
+        <dd><a href="http://k52.org/mastodon/" target="_blank">日本のマストドンインスタンスの一覧 - k52.org</a></dd>
       </dl>
     </div>
 
@@ -36,15 +40,26 @@
     <div class="thanks">
       <dl>
         <dt>素材：</dt>
-        <dd><a href="http://www.irasutoya.com/">いらすとやさん</a></dd>
+        <dd><a href="http://www.irasutoya.com/" target="_blank">いらすとやさん</a></dd>
         <dt class="thanks__split">フォント：</dt>
-        <dd><a href="http://www.fontna.com/blog/1345/">ロゴたいぷゴシックコンデンスド</a></dd>
+        <dd><a href="http://www.fontna.com/blog/1345/" target="_blank">ロゴたいぷゴシックコンデンスド</a></dd>
       </dl>
     </div>
 
-    <p class="copyright">&copy; 2018 <a href="https://gingadon.com/">銀河丼</a> All Rights Reserved.</p>
+    <p class="copyright">&copy; 2018 <a href="https://gingadon.com/" target="_blank">銀河丼</a> All Rights Reserved.</p>
   </div>
 </div>
 <script src="dist/bundle.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111752302-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111752302-1');
+</script>
+
 </body>
 </html>
