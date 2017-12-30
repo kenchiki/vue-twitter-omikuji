@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"omikuji_atlas_", frames: [[1167,0,553,553],[555,555,446,567],[0,546,553,553],[612,0,553,553],[0,0,610,544]]}
+		{name:"omikuji_atlas_", frames: [[612,0,553,553],[555,555,446,567],[1167,0,553,553],[0,546,553,553],[0,0,610,544]]}
 ];
 
 
@@ -251,8 +251,11 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 		
 		function fl_RotateContinuously() {
 			// 自由変形ツールの丸いぽっちの位置で回転する
-			this.goko.rotation += 0.2;
+			this.goko.rotation += 0.5;
 		}
+		
+		// vuejsで読み込むと高速回転するので必要
+		this.stop();
 	}
 
 	// actions tween:

@@ -17,8 +17,13 @@ html {
 }
 
 .start-btn {
-  margin-top: 50px;
   text-align: center;
+  @include breakpoint($s: 'medium', $t: 'down') {
+    margin-top: 30px;
+  }
+  @include breakpoint($s: 'medium', $t: 'up') {
+    margin-top: 50px;
+  }
   a {
     @include button;
     background: #387FC5;
@@ -151,7 +156,12 @@ html {
 }
 
 .twitter {
-  margin-top: 60px;
+  @include breakpoint($s: 'medium', $t: 'down') {
+    margin-top: 30px;
+  }
+  @include breakpoint($s: 'medium', $t: 'up') {
+    margin-top: 50px;
+  }
   text-align: center;
   .twitter__btn {
     @include button;

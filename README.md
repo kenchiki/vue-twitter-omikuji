@@ -1,0 +1,3 @@
+- オプション無しで、`npm install`を実行すると、package.jsonの内容に従って、packageをインストールします。
+- `npm run start`で開発開始
+- `npm run build`で本番環境用ファイル生成
