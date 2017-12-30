@@ -8,5 +8,18 @@
 </style>
 
 <script>
-  export default {}
+  import test4 from 'test2';
+  import createjs5 from 'createjs';
+  import omikuji5 from 'omikuji';
+
+  export default {
+    created() {
+      alert(test2);
+      alert(test3);
+//      alert('f');
+      alert(createjs.Rectangle );
+      alert(AdobeAn);
+//      alert('g');
+    }
+  }
 </script>

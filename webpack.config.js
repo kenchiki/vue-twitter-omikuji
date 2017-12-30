@@ -8,6 +8,7 @@ module.exports = {
     publicPath: 'dist/',
     filename: 'bundle.js'
   },
+  devtool: 'inline-source-map',/* ソースマップをファイル内に出力させる場合は以下を追加 */
   module: {
     loaders: [
       {
@@ -30,25 +31,51 @@ module.exports = {
           // fallback to file-loader with this naming scheme
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /test2\.js$/,
+        loader: 'imports-loader?this=>window!exports-loader?test2'
+      },
+      // {
+      //   test: /createjs\.min\.js$/,
+      //   loader: 'imports-loader?this=>window!exports-loader?createjs'
+      // },
+      {
+        test: /createjs/,
+        loader: 'imports-loader?this=>window!exports-loader?createjs'
+      },
+      {
+        test: /omikuji\.js$/,
+        loader: 'imports-loader?this=>window!exports-loader?omikuji'
       }
     ],
 
   },
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        vue: {
-          loaders: {
-            js: 'babel-loader'
-          }
-        }
-      }
+    // new webpack.LoaderOptionsPlugin({
+    //   options: {
+    //     vue: {
+    //       loaders: {
+    //         js: 'babel-loader'
+    //       }
+    //     }
+    //   }
+    // }),
+    new webpack.ProvidePlugin({
+      'test2': 'test2',
+      'createjs': 'createjs',
+      'omikuji': 'omikuji'
     })
   ],
-  /*--resolve-aliasを入れないと、デフォルトでVue.jsがRuntime-only buildになり、正常に動いてくれない
-http://qiita.com/rsooo/items/0a9caf9ee804874eac03*/
+  /*--resolve-aliasを入れないと、デフォルト（vueのpackageのmain）がRuntime-only buildの方を指定していて、正常に動いてくれない
+http://qiita.com/rsooo/items/0a9caf9ee804874eac03
+*/
   resolve: {
     alias: {
+      // createjs: path.join(__dirname, 'node_modules', 'createjs', 'builds', '1.0.0', 'createjs.min.js'),
+      createjs: path.join(__dirname, 'node_modules', 'createjs', 'builds', 'createjs-2015.11.26.min.js'),
+      omikuji: path.join(__dirname, 'src', 'omikuji.js'),
+      test2: path.join(__dirname, 'src', 'test2.js'),
       vue: 'vue/dist/vue.js'
     }
   }

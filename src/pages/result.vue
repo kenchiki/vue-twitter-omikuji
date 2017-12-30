@@ -1,11 +1,22 @@
 <template lang="html">
-<div>
-  <p class="result">{{ result }}</p>
-    <p class="result_message">{{ result_message }}</p>
+<div v-show="fortune_result">
+<div class="result_animation">
+<canvas id="result_animation"></canvas>
+</div>
+  <p class="result">{{ fortune_result }}</p>
+    <p class="result_message">{{ fortune_result_message }}</p>
+    <p class="twitter">
+    <a class="twitter_btn" v-bind:href="twitter_url" target="_blank">tweetする</a>
+</p>
 </div>
 </template>
 
 <style lang="scss" scoped>
+  .result_animation {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .result {
     white-space: pre;
   }
@@ -13,26 +24,53 @@
     white-space: pre;
     margin-top: 50px;
   }
+  .twitter_btn {
+    background: #55ACEE;
+    display: inline-block;
+    padding: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+  }
 </style>
 
 <script>
+  import Animation from '../animation.js'
+  import $ from 'jQuery';
+
   export default {
+    mixins: [Animation],
     data() {
       return {
-        result: '',
-        result_message: ''
+        fortune_result: '',
+        fortune_result_message: '',
+        twitter_url: ''
       }
     },
-    created() {
-      const random_number = this.random_number(100);
-      this.result = this.fortune_result(random_number);
-      this.result_message = this.fortune_result_message();
+    mounted() {
+//      mountedはdomが作られた後
+      const scope = this;
+
+      this.setup_canvas('result_animation', 550, 400, function (stage) {
+        const comp = AdobeAn.getComposition("798C17A546944C47AA6005C6BA94C561");
+        const lib = comp.getLibrary();
+        const daikichi = new lib.daikichi();
+        stage.addChild(daikichi);
+        createjs.Ticker.addEventListener('tick', stage);
+      });
+
+      setTimeout(function() {
+        const random_number = scope.get_random_number(100);
+        scope.fortune_result = scope.get_fortune_result(random_number);
+        scope.fortune_result_message = scope.get_fortune_result_message();
+        scope.twitter_url = scope.get_twitter_url(scope.fortune_result, scope.fortune_result_message);
+      }, 100);
     },
     methods: {
-      random_number(max_number) {
+      get_random_number(max_number) {
         return Math.floor(Math.random() * max_number);
       },
-      fortune_result(random_number) {
+      get_fortune_result(random_number) {
         let fortune_result = '';
 
         if(random_number === 0) {
@@ -58,7 +96,7 @@
 
         return fortune_result;
       },
-      fortune_result_message() {
+      get_fortune_result_message() {
         const messages = [
           '待ち人くるかも',
           '勝負するといいかも',
@@ -98,7 +136,10 @@
           '5000兆円に一歩近づけるかも'
         ];
 
-        return messages[this.random_number(messages.length)];
+        return messages[this.get_random_number(messages.length)];
+      },
+      get_twitter_url(fortune_result, fortune_result_message) {
+        return 'http://twitter.com/share?url=https://omikuji.ginga.earth&text=' + fortune_result+ '。' + fortune_result_message;
       }
     }
   }
