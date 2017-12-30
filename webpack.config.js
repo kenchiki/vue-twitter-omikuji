@@ -22,6 +22,18 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.scss/, // 対象となるファイルの拡張子
+        loaders: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            // オプションでCSS内のurl()メソッドの取り込みを禁止する
+            options: {url: false}
+          },
+          'sass-loader'
+        ]
+      },
+      {
         // edit this for additional asset file types
         test: /\.(png|jpg|gif)$/,
         loader: 'url',
