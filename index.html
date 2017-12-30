@@ -6,10 +6,44 @@
   <title>Twitter Omikuji</title>
 </head>
 <body>
-<h1>おみくじ</h1>
 
 <div id="app">
-  <router-view></router-view>
+  <div class="container">
+    <router-view></router-view>
+
+    <ul class="banners">
+      <li><a href="https://folio.ginga.earth/"><img src="images/banners__ginga_folio.png" alt=""></a></li>
+      <li><a href="https://gingadon.com/"><img src="images/banners__gingadon.png" alt=""></a></li>
+      <li><a href="https://www.amazon.co.jp/Amazon%E3%82%AE%E3%83%95%E3%83%88%E5%88%B8-E%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%97/dp/BT00DHI8G4"><img src="images/banners__amazon_gift.png" alt=""></a></li>
+    </ul>
+
+    <div class="instances">
+      <p class="instances__note">
+        銀河おみくじ出張所は、<br>
+        マストドンインスタンス『<a href="https://gingadon.com/">銀河丼</a>』から派生したコンテンツです。
+      </p>
+      <dl class="instances__search">
+        <dt>その他のマストドンインスタンスは以下のリンク等から探せます。</dt>
+        <dd><a href="https://ja.mstdn.wiki/">日本のインスタンス - マストドン日本語ウィキ</a></dd>
+        <dd><a href="http://k52.org/mastodon/">日本のマストドンインスタンスの一覧 - k52.org</a></dd>
+      </dl>
+    </div>
+
+    <div class="joke">
+      <p>おみくじの結果はすべてジョークです。</p>
+    </div>
+
+    <div class="thanks">
+      <dl>
+        <dt>素材：</dt>
+        <dd><a href="http://www.irasutoya.com/">いらすとやさん</a></dd>
+        <dt class="thanks__split">フォント：</dt>
+        <dd><a href="http://www.fontna.com/blog/1345/">ロゴたいぷゴシックコンデンスド</a></dd>
+      </dl>
+    </div>
+
+    <p class="copyright">&copy; 2018 <a href="https://gingadon.com/">銀河丼</a> All Rights Reserved.</p>
+  </div>
 </div>
 <script src="dist/bundle.js"></script>
 </body>

@@ -11,7 +11,10 @@ export default {
     setup_canvas(canvas, width, height, init) {
       var stage = new createjs.Stage(canvas);
       var $parent = $('#' + canvas).parent();
-      window.addEventListener('resize', this.window_resize($parent, stage, width, height));
+      const scope = this;
+      $(window).on('resize', function(evt) {
+        scope.window_resize($parent, stage, width, height)
+      });
       this.window_resize($parent, stage, width, height);
       init(stage);
     }

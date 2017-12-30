@@ -1,22 +1,29 @@
 <template lang="html">
-<div v-show="fortune_result">
+<div>
+
+
 <div class="result_animation">
 <canvas id="result_animation"></canvas>
 </div>
-  <p class="result">{{ fortune_result }}</p>
-    <p class="result_message">{{ fortune_result_message }}</p>
+
+<div v-show="fortune_result">
+  <div class="result">
+  <p class="result__result">
+  {{ fortune_result }}
+  </p>
+   <p class="result_message">{{ fortune_result_message }}</p>
     <p class="twitter">
-    <a class="twitter_btn" v-bind:href="twitter_url" target="_blank">tweetする</a>
-</p>
+    <a class="twitter_btn" v-bind:href="twitter_url" target="_blank">tweetする</a></p>
 </div>
+</div>
+
+</div>
+
+
 </template>
 
 <style lang="scss" scoped>
-  .result_animation {
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
   .result {
     white-space: pre;
   }
@@ -50,12 +57,32 @@
 //      mountedはdomが作られた後
       const scope = this;
 
-      this.setup_canvas('result_animation', 550, 400, function (stage) {
+      this.setup_canvas('result_animation', 640, 700, function (stage) {
         const comp = AdobeAn.getComposition("798C17A546944C47AA6005C6BA94C561");
-        const lib = comp.getLibrary();
-        const daikichi = new lib.daikichi();
-        stage.addChild(daikichi);
-        createjs.Ticker.addEventListener('tick', stage);
+        let lib = comp.getLibrary();
+
+        const loader = new createjs.LoadQueue(false);
+        loader.addEventListener("fileload", function(evt){
+          var images=comp.getImages();
+          if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }
+        });
+        loader.addEventListener("complete", function(evt){
+          var lib=comp.getLibrary();
+          var ss=comp.getSpriteSheet();
+          var queue = evt.target;
+          var ssMetadata = lib.ssMetadata;
+          for(let i=0; i<ssMetadata.length; i++) {
+            ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+          }
+
+          const result = new lib.result();
+          stage.addChild(result);
+          createjs.Ticker.addEventListener('tick', stage);
+        });
+        lib=comp.getLibrary();
+        loader.loadManifest(lib.properties.manifest);
+
+
       });
 
       setTimeout(function() {
