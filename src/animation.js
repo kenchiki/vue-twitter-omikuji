@@ -1,5 +1,3 @@
-import $ from 'jQuery';
-
 export default {
   methods: {
     window_resize($parent, stage, width, height) {

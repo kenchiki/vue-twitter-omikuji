@@ -33,38 +33,22 @@ module.exports = {
         }
       },
       {
-        test: /test2\.js$/,
-        loader: 'imports-loader?this=>window!exports-loader?test2'
-      },
-      // {
-      //   test: /createjs\.min\.js$/,
-      //   loader: 'imports-loader?this=>window!exports-loader?createjs'
-      // },
-      {
         test: /createjs/,
-        loader: 'imports-loader?this=>window!exports-loader?createjs'
+        loader: 'imports-loader?this=>window!exports-loader?window_load_createjs'
       },
       {
         test: /omikuji\.js$/,
-        loader: 'imports-loader?this=>window!exports-loader?omikuji'
+        loader: 'imports-loader?this=>window!exports-loader?window_load_omikuji'
       }
     ],
 
   },
   plugins: [
-    // new webpack.LoaderOptionsPlugin({
-    //   options: {
-    //     vue: {
-    //       loaders: {
-    //         js: 'babel-loader'
-    //       }
-    //     }
-    //   }
-    // }),
     new webpack.ProvidePlugin({
-      'test2': 'test2',
-      'createjs': 'createjs',
-      'omikuji': 'omikuji'
+      'window_load_test2': 'window_load_test2',
+      'window_load_createjs': 'window_load_createjs',
+      'window_load_omikuji': 'window_load_omikuji',
+      '$': 'jquery'
     })
   ],
   /*--resolve-aliasを入れないと、デフォルト（vueのpackageのmain）がRuntime-only buildの方を指定していて、正常に動いてくれない
@@ -72,10 +56,8 @@ http://qiita.com/rsooo/items/0a9caf9ee804874eac03
 */
   resolve: {
     alias: {
-      // createjs: path.join(__dirname, 'node_modules', 'createjs', 'builds', '1.0.0', 'createjs.min.js'),
-      createjs: path.join(__dirname, 'node_modules', 'createjs', 'builds', 'createjs-2015.11.26.min.js'),
-      omikuji: path.join(__dirname, 'src', 'omikuji.js'),
-      test2: path.join(__dirname, 'src', 'test2.js'),
+      window_load_createjs: path.join(__dirname, 'node_modules', 'createjs', 'builds', '1.0.0', 'createjs.min.js'),
+      window_load_omikuji: path.join(__dirname, 'src', 'omikuji.js'),
       vue: 'vue/dist/vue.js'
     }
   }

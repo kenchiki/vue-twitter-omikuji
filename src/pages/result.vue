@@ -36,7 +36,6 @@
 
 <script>
   import Animation from '../animation.js'
-  import $ from 'jQuery';
 
   export default {
     mixins: [Animation],
