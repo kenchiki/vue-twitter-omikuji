@@ -57,7 +57,6 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      'window_load_test2': 'window_load_test2',
       'window_load_createjs': 'window_load_createjs',
       'window_load_omikuji': 'window_load_omikuji',
       '$': 'jquery'

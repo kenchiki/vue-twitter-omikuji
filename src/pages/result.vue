@@ -39,7 +39,7 @@
       }
     },
     mounted() {
-//      mountedはdomが作られた後
+//      mountedはDOMが作られた後。createdではまだDOMが作られてない注意。
       const scope = this;
 
       this.setup_canvas('result_animation', 640, 700, function (stage) {
