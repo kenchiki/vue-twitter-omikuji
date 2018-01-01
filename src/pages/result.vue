@@ -170,7 +170,7 @@
         return messages[this.get_random_number(messages.length)];
       },
       get_twitter_url(fortune_result, fortune_result_message) {
-        return 'http://twitter.com/share?url=https://omikuji.ginga.earth&text=' + fortune_result+ '。' + fortune_result_message;
+        return 'http://twitter.com/share?url=https://omikuji.ginga.earth&text=' + fortune_result+ '。' + fortune_result_message + '&hashtags=銀河おみくじ';
       }
     }
   }
